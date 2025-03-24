@@ -1,0 +1,21 @@
+header {
+    background-image: url('/Header.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    padding: 20px 100px;
+    width: auto;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    height: 150px;
+}
+
+

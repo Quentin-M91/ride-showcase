@@ -1,0 +1,102 @@
+/* Déclaration police custom */
+@font-face {
+  font-family: 'Machinery';
+  src: url(./../../../../public/fonts/MachineryScript_PERSONAL_USE_ONLY.otf);
+  font-weight: normal;
+  font-size: normal;
+}
+
+/* Style global du body */
+body {
+  line-height: 1.6;
+  margin: 40px;
+  background-image: url('/logo.png');
+  background-color: #f4f4f4df;
+  background-repeat: repeat;
+  background-blend-mode: lighten;
+  background-size: 50%;
+  color: #000000;
+}
+
+/* Style des titres principaux */
+h1 {
+  text-align: center;
+  font-family: 'Machinery';
+  color: #0B192C;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+/* Style des sous-titres h2 */
+h2 {
+  font-family: Arial, sans-serif;
+  color: #1e3e62;
+  font-size: 1.8em;
+  border-bottom: 2px solid #191BDF;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+/* Style des sous-titres h3 */
+h3 {
+  font-family: Arial, sans-serif;
+  color: #1e3e62;
+  font-size: 1.4em;
+  border-bottom: 2px solid #191BDF;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+/* Style des paragraphes */
+p {
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+
+/* Style des listes */
+ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+/* Style des liens */
+a {
+  color: #4A90E2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Style pour les éléments importants ou citations */
+blockquote {
+  background-color: #e9f3fc;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 5px solid #4A90E2;
+  font-style: italic;
+}
+
+/* Style pour les sections du règlement */
+section {
+  margin-bottom: 20px;
+}
+
+/* Style des éléments de la liste de manière spécifique */
+ul li {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+/* Style pour les espaces entre les sections */
+h2+p {
+  margin-top: 0;
+}
