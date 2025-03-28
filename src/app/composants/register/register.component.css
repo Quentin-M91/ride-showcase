@@ -1,0 +1,97 @@
+.container2 {
+    width: 70%;
+}
+
+form {
+    max-width: 400px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgb(0, 0, 0);
+    margin: 70px auto;
+}
+
+/* form{
+    justify-content: space-around;
+    gap: 30px;
+    padding: 20px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+    width: 50%;
+    border-radius: 10px;
+} */
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+}
+
+div *ngIf {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 80%;
+    overflow: hidden;
+    z-index: -1;
+    background-color: #ff2200;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px);
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+      filter: blur(0); /* Start as invisible */
+    }
+    100% {
+      filter: blur(1); /* End fully visible */
+    }
+}
+
+.video-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Assombrit légèrement */
+}
