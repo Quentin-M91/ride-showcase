@@ -1,32 +1,36 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RequeteApiService } from '../../services/requete-api.service';
 
-
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  loginForm: FormGroup;
   
-  constructor(private router: Router,private requeteApiService:RequeteApiService) { }
+  constructor(private fb: FormBuilder, private apiService: RequeteApiService, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required], // Peut être un email ou un username
+      password: ['', Validators.required]
+    });
+  }
 
-  onSubmit(): void {
-    
-    if (this.username && this.password) {
-      this.router.navigate(["/dashboard"])
-      let authBody={"username":"admin","password":"pwd"}
-
-      this.requeteApiService.login(authBody).subscribe(value=>{
-        console.log(value)
-        localStorage.setItem("token", value.token)
-        })
-      }
-    else { console.log('Veuillez renseigner tous les champs.'); }
+  onLogin() {
+    if (this.loginForm.valid) {
+      this.apiService.login(this.loginForm.value).subscribe({
+        next: (res) => {
+          localStorage.setItem('token', res.token); // Stocke le token JWT
+          this.router.navigate(['/accueil']); // Redirige après connexion
+        },
+        error: (err) => {
+          alert('Échec de la connexion : ' + err.error.message);
+        }
+      });
+    }
   }
 }

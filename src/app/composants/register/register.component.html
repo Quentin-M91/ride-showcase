@@ -8,7 +8,7 @@
     <div class="overlay"></div>
 </div>
 
-<form [formGroup]="registerForm" (ngSubmit)="onCreateSubmit()">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> <!--onCreateSubmit -->
     <div>
         <label for="nom">Nom :</label>
         <input id="nom" type="text" formControlName="nom" required />

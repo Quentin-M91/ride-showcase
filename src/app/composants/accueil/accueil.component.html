@@ -1,58 +1,122 @@
 <html>
 <app-header></app-header>
-<div class="video-container">
-    <video autoplay muted loop playsinline>
-        <source src="/Bugati_3D.mp4" type="video/mp4" />
-        Votre navigateur ne supporte pas les vidéos HTML5.
-    </video>
-    <div class="overlay"></div>
-</div>
 
-<div class="body">
-    <div class="container">
-        <h1><strong>Bienvenue chez Ride Showcase</strong> <br>La passion auto, pour tous et par tous !</h1>
-        <p>Découvrez l'univers de l'automobile grâce à Ride Showcase qui permettra de mettre en avant vos véhicules.
-            Avant tout, voici quelque détails de ce site internet.</p>
+<main class="body">
 
-        <h2>Qui suis-je ?</h2>
-        <p>Je suis un jeune développeur aberrant, qui aime l'univers de l'automobile. Ce site est une idée qui m'est
-            parvenu afin de rassembler un maximum
-            de personnes, peu importe ce que vous soyez. Que vous soyez fan des voitures, que vous participiez à des
-            rassos, que vous travailliez dans
-            le monde de l'automobile ou bien même si vous n'y connaissez rien, ce site est fait pour vous.</p>
+    <section class="Section-accueil">
+        <section class="container" id="accueil">
+            <div class="video-section">
+                <video id="vidéo-gauche" autoplay loop muted playsinline>
+                    <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1743750762/Section_G1_qa9f5q.mp4"
+                        type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
 
-        <h2>Comment ça marche ?</h2>
-        <p>Le site va servir à vous crée un compte, afin de pouvoir afficher l'une ou plusieurs de vos voitures afin de
-            la ou les promouvoir.
-            Vous pourrez aussi ajouter chaque détails, chaque modifications que vous avez apportées à votre
-            véhicule.<br>
-            Vous pourrez également voir les profils de chaque utilisateurs, voir leurs véhicules ainsi que leurs
-            différentes modifications.
-            Vous pourrez également les contacter pour des questions, des conseils ou bien même pour des rencontres.
-        </p>
+            <div class="text-section">
+                <h1>Bienvenue chez Ride Showcase ! <br>La passion auto, pour tous et par tous !</h1>
+                <div class="underline"></div>
+                <p>Découvrez l'univers de l'automobile grâce à Ride Showcase qui permettra de mettre en avant vos
+                    véhicules.
+                    <br>Avant tout, voici quelque détails de ce site internet.
+                </p>
+                <a href="#" class="connexion-btn">EN SAVOIR PLUS</a>
+            </div>
+        </section>
+    </section>
 
-        <h3>Règles à respecter !</h3>
-        <ul>
-            <li><strong>Soyez respectueux</strong> : Lors de votre création de compte, soyez respectueux envers les
-                autres utilisateurs, ne mettez pas de nom d'utilisateur offensant, pas de discours haineux, spamming,
-                usurpation d'identité.</li>
-            <li><strong>Contenu et publications</strong> : Pas de contenu inapproprié, veuilliez utiliser des
-                utilisation de noms et de descriptions appropriés, ne publiez aucune fausse informations.</li>
-            <li><strong>Utilisation de la plateforme</strong>: Ne partagez jamais vos identifiants. Aucune personne ne
-                vous demandera vos informations, pas même le créateur. Respecter les conditions générales d'utilisation.
-            </li>
-            <li><strong>Garages virtuel</strong> : Publier uniquement des véhicules réels. Le but est de promouvoir
-                votre voiture, pas une voiture imaginaire. De même lors de l'ajout de photos. Mettez seulement des
-                photos correspondentes aux images de votre véhicules.</li>
-        </ul>
+    <section class="Section-accueil">
+        <section class="container" id="présentation">
+            <div class="text-section">
+                <h2>Qui suis-je ?</h2>
+                <div class="underline"></div>
+                <p>Je suis un jeune développeur aberrant, qui aime l'univers de l'automobile. Ce site est une idée qui
+                    m'est
+                    parvenu afin de rassembler un maximum
+                    de personnes, peu importe ce que vous soyez. Que vous soyez fan des voitures, que vous participiez à
+                    des
+                    rassos, que vous travailliez dans
+                    le monde de l'automobile ou bien même si vous n'y connaissez rien, ce site est fait pour vous.
+                </p>
+            </div>
 
-        <button class="connexion-btn"><a href="/inscription">Crée un compte</a></button>
+            <div class="image-section">
+                <img src="/Porsche_profil.png" alt="Photo d'une voiture sportive">
+            </div>
+        </section>
+    </section>
 
-    </div>
-</div>
+    <section class="Section-accueil">
+        <section class="container" id="instruction">
+            <div class="video-section">
+                <video id="vidéo-gauche" autoplay loop muted playsinline>
+                    <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1743762579/Section_D2_nibxsc.mp4"
+                        type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
 
+            <div class="text-section" id="instruction-text">
+                <h2>Comment ça marche ?</h2>
+                <div class="underline"></div>
+                <p>Le site va servir à vous crée un compte, afin de pouvoir afficher l'une ou plusieurs de vos voitures
+                    afin
+                    de
+                    la ou les promouvoir.
+                    Vous pourrez aussi ajouter chaque détails, chaque modifications que vous avez apportées à votre
+                    véhicule.<br>
+                    Vous pourrez également voir les profils de chaque utilisateurs, voir leurs véhicules ainsi que leurs
+                    différentes modifications.
+                    Vous pourrez également les contacter pour des questions, des conseils ou bien même pour des
+                    rencontres.
+                </p>
+            </div>
+        </section>
+    </section>
 
+    <section class="Section-accueil">
+        <section class="container" id="regles">
+            <div class="text-section">
+                <h2>Règles à respecter !</h2>
+                <div class="underline"></div>
+                <ul>
+                    <li><strong>Soyez respectueux</strong> : Lors de votre création de compte, soyez respectueux envers
+                        les
+                        autres utilisateurs, ne mettez pas de nom d'utilisateur offensant, pas de discours haineux,
+                        spamming,
+                        usurpation d'identité.</li>
+                    <li><strong>Contenu et publications</strong> : Pas de contenu inapproprié, veuilliez utiliser des
+                        utilisation de noms et de descriptions appropriés, ne publiez aucune fausse informations.</li>
+                    <li><strong>Utilisation de la plateforme</strong>: Ne partagez jamais vos identifiants. Aucune
+                        personne
+                        ne
+                        vous demandera vos informations, pas même le créateur. Respecter les conditions générales
+                        d'utilisation.
+                    </li>
+                    <li><strong>Garages virtuel</strong> : Publier uniquement des véhicules réels. Le but est de
+                        promouvoir
+                        votre voiture, pas une voiture imaginaire. De même lors de l'ajout de photos. Mettez seulement
+                        des
+                        photos correspondentes aux images de votre véhicules.</li>
+                </ul>
+            </div>
 
+            <div class="video-section">
+                <video id="vidéo-droite" autoplay loop muted playsinline>
+                    <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1743750778/Section_G2_m6m5t6.mp4"
+                        type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
+        </section>
+    </section>
+
+    
+
+        <!-- <a href="/inscription" class="connexion-btn">Crée un compte</a> -->
+
+   
+</main>
 
 <app-footer></app-footer>
 

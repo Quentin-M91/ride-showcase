@@ -1,1 +1,42 @@
-<p>login works!</p>
+<main class="body">
+    <form class="container" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="design">
+            <div class="pill-1 rotate-45"></div>
+            <div class="pill-2 rotate-45"></div>
+            <div class="pill-3 rotate-45"></div>
+            <div class="pill-4 rotate-45"></div>
+        </div>
+        <div class="login">
+            <!-- Nom d'utilisateur ou Email --> 
+            <h2 class="title">Connexion</h2>
+            <div class="text-input">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="email" formControlName="email"
+                    placeholder="Entrez votre email" required />
+                <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="error">
+                    Email requis.
+                </div>
+            </div>
+
+
+            <!-- Mot de passe -->
+            <div class="text-input">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe"
+                    required />
+                <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error">
+                    Mot de passe requis.
+                </div>
+            </div>
+
+            <!-- Bouton de connexion -->
+            <button class="login-btn" type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+
+            <!-- Lien vers l'inscription -->
+            <div class="create">
+                <p>Pas encore inscrit ? <a href="/inscription">Créer un compte</a></p>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+    </form>
+</main> 

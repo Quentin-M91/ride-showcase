@@ -12,6 +12,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 header img {
@@ -24,8 +25,9 @@ a {
 }
 
 .connexion-btn {
+    font-family: Arial, sans-serif;
     background: #FFA700; /* Orange foncé */
-    color: white;
+    color: #0B192C;
     border: none;
     padding: 10px 20px;
     font-size: 14px;
@@ -40,4 +42,99 @@ a {
     background: #FE6807; /* Rouge orangé */
     transform: scale(1.05);
 }
+/*
+header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 90%, rgba(70, 70, 70, 1) 100%), url('/Header.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    padding: 20px 100px;
+    width: auto;
+}
 
+/* Style de la navbar 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo 
+.logo img {
+    font-size: 2px;
+    font-weight: bold;
+}
+
+/* Menu en mode normal 
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    padding: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Menu hamburger 
+.menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    display: none; /* Caché en mode desktop 
+}
+
+.connexion-btn a {
+    background: #FFA700; /* Orange foncé 
+    color: #0B192C;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-decoration: none; /* Supprime le soulignement si c'est un lien 
+}
+
+.connexion-btn:hover {
+    background: #FE6807; /* Rouge orangé 
+    transform: scale(1.05);
+}
+
+
+/* Responsive 
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 10px 0;
+    }
+} 
+    */
