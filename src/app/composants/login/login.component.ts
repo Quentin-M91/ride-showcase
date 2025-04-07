@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RequeteApiService } from '../../services/requete-api.service';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FooterComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -33,4 +34,10 @@ export class LoginComponent {
       });
     }
   }
+
+
+  //Sert à la navigation entre les routes et permettre leur sécurité. Lié avec html
+    pageAccueil() {
+      this.router.navigate(["/accueil"]);
+    }
 }

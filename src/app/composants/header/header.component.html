@@ -1,24 +1,25 @@
 <header>
     
     <div class="container">
-        <p> </p>
-        <a href="/accueil"><img src="logo_stickers.png" alt="Logo"></a>
-        <a href="/connexion" class="connexion-btn">Connexion</a>
+        <nav class="navbar">
+            <div class="menu-toggle" (click)="toggleMenu()">
+                {{ isMenuOpen ? '✖' : '☰' }}
+            </div>
+
+            <ul class="nav-links" [class.active]="isMenuOpen">
+                <li><a routerLink="/accueil" (click)="pageAccueil()">Accueil</a></li>
+                <li><a routerLink="/profil" (click)="pageProfil()">Profil</a></li>
+                <li><a routerLink="/garage" (click)="pageGarage()">Garage</a></li>
+                <li><a routerLink="/chat" (click)="pageChat()">Chat</a></li>
+                <li><a routerLink="/contact" (click)="pageContact()">Contact</a></li>
+            </ul>
+
+            <div class="logo">
+                <a routerLink="/accueil" (click)="pageAccueil()"><img src="logo_stickers.png" alt="Logo"></a>
+            </div>
+
+            <a routerLink="/connexion" (click)="pageConnexion()" class="connexion-btn">Connexion</a>
+        </nav>
     </div>
 
 </header>
-
-<!-- <nav class="navbar">
-    <div class="menu-toggle" (click)="toggleMenu()">
-        ☰
-    </div>
-    <ul class="nav-links" [class.active]="isMenuOpen">
-        <li><a routerLink="/">Accueil</a></li>
-        <li><a routerLink="/profil">Profil</a></li>
-        <li><a routerLink="/garage">Garage</a></li>
-        <li><a routerLink="/chat">Chat</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
-    </ul>
-    <div class="logo"><a href="/accueil"><img src="logo_stickers.png" alt="Logo"></a></div>
-    <button class="connexion-btn"><a href="/connexion">Connexion</a></button>
-</nav> -->

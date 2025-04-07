@@ -8,13 +8,6 @@ header {
     width: auto;
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-}
-
 header img {
     height: 150px;
 }
@@ -22,38 +15,16 @@ header img {
 a {
     text-decoration: none;
     color: #0B192C;
-}
-
-.connexion-btn {
-    font-family: Arial, sans-serif;
-    background: #FFA700; /* Orange foncé */
-    color: #0B192C;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 20px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    text-decoration: none; /* Supprime le soulignement si c'est un lien */
 }
 
-.connexion-btn:hover {
-    background: #FE6807; /* Rouge orangé */
-    transform: scale(1.05);
-}
-/*
-header {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 90%, rgba(70, 70, 70, 1) 100%), url('/Header.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 20px;
-    padding: 20px 100px;
-    width: auto;
+/* Logo */
+.logo img {
+    font-size: 2px;
+    font-weight: bold;
 }
 
-/* Style de la navbar 
+/* Style de la navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -61,38 +32,73 @@ header {
     position: relative;
 }
 
-/* Logo 
-.logo img {
-    font-size: 2px;
-    font-weight: bold;
-}
-
-/* Menu en mode normal 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li {
-    padding: 10px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* Menu hamburger 
+/* Menu hamburger */
 .menu-toggle {
-    font-size: 30px;
+    font-size: 32px;
     cursor: pointer;
-    display: none; /* Caché en mode desktop 
+    z-index: 10;
+    color: black;
+    position: relative;
+    margin: 10px;
 }
 
-.connexion-btn a {
-    background: #FFA700; /* Orange foncé 
+
+/* Menu masqué par défaut */
+.nav-links {
+    font-family: Arial, sans-serif;
+    list-style: none;
+    flex-direction: row;
+    position: absolute;
+    width: fit-content;
+    background: #0b192cdf;
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 10px;
+    z-index: 99;
+
+    /* animation */
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.5s ease;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Menu affiché si toggle actif */
+.nav-links.active {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    visibility: visible;
+}
+
+
+/* Liens dans le menu */
+.nav-links li a {
+    background: #1E3E62;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    display: inline-block;
+}
+
+.nav-links li a:hover {
+    background: #FF8600;
+    transition: 1s;
+    transform: translate(0px, 3px);
+}
+
+
+
+.connexion-btn {
+    font-family: Arial, sans-serif;
+    background: #FFA700;
+    /* Orange foncé */
     color: #0B192C;
     border: none;
     padding: 10px 20px;
@@ -101,40 +107,24 @@ header {
     border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    text-decoration: none; /* Supprime le soulignement si c'est un lien 
+    text-decoration: none;
+    /* Supprime le soulignement si c'est un lien */
 }
 
 .connexion-btn:hover {
-    background: #FE6807; /* Rouge orangé 
+    background: #FE6807;
+    /* Rouge orangé */
     transform: scale(1.05);
 }
 
 
-/* Responsive 
-@media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
+/* Responsive */
+/* Le menu doit être visible via toggle quel que soit le format */
+@media screen and (min-width: 769px) {
     .nav-links {
-        display: none;
-        flex-direction: column;
         position: absolute;
-        top: 50px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.9);
-        width: 200px;
-        text-align: center;
-        padding: 10px;
-        border-radius: 8px;
+        left: 50px;
+        top: 25px;
+        width: auto;
     }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        padding: 10px 0;
-    }
-} 
-    */
+}

@@ -4,7 +4,7 @@
 <main class="body">
 
     <section class="Section-accueil">
-        <section class="container" id="accueil">
+        <div class="container" id="accueil">
             <div class="video-section">
                 <video id="vidéo-gauche" autoplay loop muted playsinline>
                     <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1743750762/Section_G1_qa9f5q.mp4"
@@ -22,11 +22,11 @@
                 </p>
                 <a href="#" class="connexion-btn">EN SAVOIR PLUS</a>
             </div>
-        </section>
+        </div>
     </section>
 
     <section class="Section-accueil">
-        <section class="container" id="présentation">
+        <div class="container" id="présentation">
             <div class="text-section">
                 <h2>Qui suis-je ?</h2>
                 <div class="underline"></div>
@@ -41,16 +41,16 @@
             </div>
 
             <div class="image-section">
-                <img src="/Porsche_profil.png" alt="Photo d'une voiture sportive">
+                <img id="image-droite" src="/Porsche_profil.png" alt="Photo d'une voiture sportive">
             </div>
-        </section>
+        </div>
     </section>
 
     <section class="Section-accueil">
-        <section class="container" id="instruction">
+        <div class="container" id="instruction">
             <div class="video-section">
                 <video id="vidéo-gauche" autoplay loop muted playsinline>
-                    <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1743762579/Section_D2_nibxsc.mp4"
+                    <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1743939570/Section_G2_ceulod.mp4"
                         type="video/mp4">
                     Votre navigateur ne supporte pas la vidéo.
                 </video>
@@ -71,11 +71,11 @@
                     rencontres.
                 </p>
             </div>
-        </section>
+        </div>
     </section>
 
     <section class="Section-accueil">
-        <section class="container" id="regles">
+        <div class="container" id="regles">
             <div class="text-section">
                 <h2>Règles à respecter !</h2>
                 <div class="underline"></div>
@@ -108,14 +108,25 @@
                     Votre navigateur ne supporte pas la vidéo.
                 </video>
             </div>
-        </section>
+        </div>
     </section>
 
+    <section class="Section-accueil">
+        <div class="container" id="Crée-compte">
+            <div class="image-section">
+                <img  id="image-gauche" src="/Image-G2.jpg" alt="Photo d'une voiture sportive">
+            </div>
+
+            <div class="text-section">
+                <h2>Créez votre compte !</h2>
+                <div class="underline"></div>
+                <p>Vous êtes prêt à vous lancer ? 
+                    <br>Créez votre compte dès maintenant et rejoignez notre communauté de passionnés d'automobiles !</p>
+                <a routerLink="/inscription" (click)="pageInscription()" class="connexion-btn">Créer un compte</a>
+            </div>
+        </div> 
+    </section>
     
-
-        <!-- <a href="/inscription" class="connexion-btn">Crée un compte</a> -->
-
-   
 </main>
 
 <app-footer></app-footer>

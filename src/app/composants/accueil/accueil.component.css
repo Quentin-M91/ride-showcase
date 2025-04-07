@@ -34,13 +34,17 @@
 }
 
 #instruction {
-    background: linear-gradient(110deg, #ff0080 0%, #cf15a3 25%, #a23aed 50%, #40b0df 75%, #00eaff 100%);
-    /* background: linear-gradient(110deg, #ff0080 0%, #db2192 15%,  #b643a4 30%, #9264b6 45%, #6d86c9 60%, #49a7db 75%, #24c9ed 90%, #00eaff 100%); */
-
+    background: #37343B;
+    color: white;
 }
 
 #regles {
     background-color: #0F0F1A;
+    color: white;
+}
+
+#Crée-compte {
+    background-color: #08080A;
     color: white;
 }
 
@@ -79,11 +83,6 @@
 .text-section p {
     font-size: 1.2em;
     line-height: 1.5;
-}
-
-#instruction-text {
-    background-color: rgba(255, 255, 255, 0.126);
-    border-radius: 200px;
 }
 
 /* LISTE DES RÈGLES */
@@ -130,6 +129,15 @@ ul li strong {
     mask-image: linear-gradient(to left, black 60%, transparent 100%);
 }
 
+.video-section #vidéo-droite {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+    mask-image: linear-gradient(to left, black 60%, transparent 100%);
+}
+
 /* Image Section */
 .image-section {
     width: 50%;
@@ -143,93 +151,17 @@ ul li strong {
     height: 100%;
     object-fit: cover;
     object-position: right;
+}
+
+.image-section #image-gauche {
+    -webkit-mask-image: linear-gradient(to right, black 60%, transparent 100%);
+    mask-image: linear-gradient(to right, black 60%, transparent 100%);
+}
+
+.image-section #image-droite {
     -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
     mask-image: linear-gradient(to left, black 60%, transparent 100%);
 }
-
-/* Style global du body */
-/* .body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 90%;
-    padding: 20px;
-
-} */
-
-/* TITRES */
-/* h1 {
-    font-size: 50px;
-    font-weight: 700px;
-    text-align: center;
-    font-family: 'Machinery';
-    padding: 20px;
-    background: linear-gradient(to right, #0B192C, #FE6807);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 0.1px;
-    -webkit-text-stroke-color: rgba(255, 255, 255, 0.703);
-}
-
-h2 {
-    background: #1E3E62;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 20px;
-}
-
-h3 {
-    background: #1E3E62;
-    border-radius: 5px;
-    font-size: 30px;
-    font-weight: 700px;
-    font-family: 'Machinery';
-    padding: 10px 15px;
-    color: white;
-} */
-
-/* PARAGRAPHES */
-/* p {
-    background: #0B192C;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    line-height: 1.6;
-} */
-
-/* LISTE DES RÈGLES */
-/* ul {
-    background: #FE6807;
-    padding: 15px;
-    border-radius: 10px;
-    list-style: none;
-}
-
-ul li {
-    color: white;
-    font-weight: 600;
-}
-
-ul li strong {
-    color: #0B192C;
-} */
-
-/* video {
-    display: block;
-    width: 70%;
-    max-width: 800px;
-    margin: 20px auto;
-    border-radius: 10px;
-} */
 
 .connexion-btn {
     background: #FFA700;
@@ -242,12 +174,10 @@ ul li strong {
     border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    text-decoration: none;
-    /* Supprime le soulignement si c'est un lien */
+    text-decoration: none; /* Supprime le soulignement si c'est un lien */
 }
 
 .connexion-btn:hover {
-    background: #FE6807;
-    /* Rouge orangé */
+    background: #FE6807; /* Rouge orangé */
     transform: scale(1.05);
 }
