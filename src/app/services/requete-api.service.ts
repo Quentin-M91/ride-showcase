@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { FormGroup } from '@angular/forms';
 
 
 @Injectable({
@@ -28,9 +29,8 @@ export class RequeteApiService {
     return this.httpUtilisateurs.post(`${this.baseUrl}/register`, userData);
   }
 
-  // Connexion
-  login(credentials: any): Observable<any> {
-    return this.httpUtilisateurs.post(`${this.baseUrl}/login`, credentials)
+  login(loginForm: FormGroup): Observable<any> {
+    return this.httpUtilisateurs.post(`${this.baseUrl}/login`, loginForm, {withCredentials: true});
   }
 
   // Vérifie si l'utilisateur est connecté
@@ -79,4 +79,16 @@ export class RequeteApiService {
       throw new Error('No authentication token');
     }
   }
+
+  getUserInfo(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpUtilisateurs.get(`${this.baseUrl}/usersInfo`, { headers });
+  }
+
+  // getUserInfo(): Observable<{ username: string }> {
+  //   this.ensureToken();
+  //   const headers = this.getHeaders();
+  //   return this.httpUtilisateurs.get<{ username: string }>(`${this.baseUrl}/user`, { headers });
+  // }
 }

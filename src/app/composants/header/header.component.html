@@ -18,7 +18,10 @@
                 <a routerLink="/accueil" (click)="pageAccueil()"><img src="logo_stickers.png" alt="Logo"></a>
             </div>
 
-            <a routerLink="/connexion" (click)="pageConnexion()" class="connexion-btn">Connexion</a>
+            <!-- <a routerLink="/connexion" (click)="pageConnexion()" class="connexion-btn">Connexion</a> -->
+
+            <a *ngIf="!username" routerLink="/connexion" (click)="pageConnexion()" class="connexion-btn">Connexion</a>
+            <span *ngIf="username" class="welcome-msg"> Bienvenue, {{ username }} </span>
         </nav>
     </div>
 

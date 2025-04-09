@@ -16,7 +16,7 @@ export class LoginComponent {
   
   constructor(private fb: FormBuilder, private apiService: RequeteApiService, private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required], // Peut être un email ou un username
+      email: ['', Validators.required], 
       password: ['', Validators.required]
     });
   }
@@ -25,10 +25,17 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.apiService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          localStorage.setItem('token', res.token); // Stocke le token JWT
+          console.log('Token en génération');
+
+          const token = res ?.token;
+          if (token) {
+            localStorage.setItem('token', res.token); // Stocke le token JWT
+            console.log('Token reçu:', res.token);
+          }
+
           this.router.navigate(['/accueil']); // Redirige après connexion
         },
-        error: (err) => {
+        error: (err : any) => {
           alert('Échec de la connexion : ' + err.error.message);
         }
       });

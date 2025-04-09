@@ -37,7 +37,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom right, #FF8600, #1E3E62, #0B192C);
+    background: linear-gradient(to bottom right, #0B192C, #1E3E62, #FF8600);
 }
 
 .container {
@@ -68,7 +68,7 @@ a {
     position: absolute;
     width: 80px;
     height: 200px;
-    background: linear-gradient(#FF8600, #1E3E62, #0B192C);
+    background: linear-gradient(#0B192C, #1E3E62, #FF8600);
     border-radius: 40px;
 }
 
@@ -78,7 +78,7 @@ a {
     position: absolute;
     height: 450px;
     width: 220px;
-    background: linear-gradient(#FF8600, #1E3E62, #0B192C);
+    background: linear-gradient(#0B192C, #1E3E62, #FF8600);
     border-radius: 200px;
     border: 30px solid #FFA700;
 }
@@ -89,7 +89,7 @@ a {
     position: absolute;
     height: 200px;
     width: 100px;
-    background: linear-gradient(#FF8600, #1E3E62, #0B192C);
+    background: linear-gradient(#0B192C, #1E3E62, #FF8600);
     border-radius: 70px;
 }
 
@@ -99,7 +99,7 @@ a {
     position: absolute;
     height: 300px;
     width: 120px;
-    background: linear-gradient(#FF8600, #1E3E62);
+    background: linear-gradient(#1E3E62, #FF8600);
     border-radius: 70px;
 }
 
@@ -157,7 +157,7 @@ a {
     width: 68%;
     padding: 10px;
     color: white;
-    background: linear-gradient(to right, #FF8600, #1E3E62, #0B192C);
+    background: linear-gradient(to right, #0B192C, #1E3E62, #FF8600);
     border: none;
     border-radius: 20px;
     cursor: pointer;

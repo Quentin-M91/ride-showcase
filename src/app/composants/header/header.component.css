@@ -117,6 +117,15 @@ a {
     transform: scale(1.05);
 }
 
+/* Message de bienvenue */
+.welcome-msg {
+    font-family: Arial, sans-serif;
+    background: #FF8600;
+    color: #0B192C;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+}
 
 /* Responsive */
 /* Le menu doit être visible via toggle quel que soit le format */
