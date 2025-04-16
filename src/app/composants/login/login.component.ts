@@ -13,10 +13,10 @@ import { FooterComponent } from "../footer/footer.component";
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  
+
   constructor(private fb: FormBuilder, private apiService: RequeteApiService, private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required], 
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -27,15 +27,15 @@ export class LoginComponent {
         next: (res) => {
           console.log('Token en génération');
 
-          const token = res ?.token;
+          const token = res?.token;
           if (token) {
             localStorage.setItem('token', res.token); // Stocke le token JWT
             console.log('Token reçu:', res.token);
           }
 
-          this.router.navigate(['/accueil']); // Redirige après connexion
+          this.router.navigate(['/profil']); // Redirige après connexion
         },
-        error: (err : any) => {
+        error: (err: any) => {
           alert('Échec de la connexion : ' + err.error.message);
         }
       });
@@ -44,7 +44,7 @@ export class LoginComponent {
 
 
   //Sert à la navigation entre les routes et permettre leur sécurité. Lié avec html
-    pageAccueil() {
-      this.router.navigate(["/accueil"]);
-    }
+  pageAccueil() {
+    this.router.navigate(["/accueil"]);
+  }
 }

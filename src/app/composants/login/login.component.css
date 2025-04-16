@@ -182,6 +182,10 @@ a:hover {
     bottom: 30px;
 }
 
+.create a {
+    font-weight: bold;
+}
+
 .create i {
     color: #FE6807;
     margin-left: 10px;

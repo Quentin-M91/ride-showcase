@@ -4,13 +4,15 @@ import { ConditionGeneraleComponent } from './composants/condition-generale/cond
 import { RegisterComponent } from './composants/register/register.component';
 import { LoginComponent } from './composants/login/login.component';
 import { ProfilComponent } from './composants/profil/profil.component';
+import { authGuard } from './guards/auth.guard';
+import { GarageComponent } from './composants/garage/garage.component';
 
 export const routes: Routes = [
     { path: "", component: AccueilComponent, pathMatch: 'full' },
-    { path: "accueil", component: AccueilComponent, pathMatch: 'full' },
     { path: "condition-generale", component: ConditionGeneraleComponent, pathMatch: 'full' },
     { path: "inscription", component: RegisterComponent, pathMatch: 'full' },
     { path: "connexion", component: LoginComponent, pathMatch: 'full' },
-    { path: "profil", component: ProfilComponent, pathMatch: 'full' },
+    { path: "profil", component: ProfilComponent, canActivate: [authGuard], pathMatch: 'full' },
+    { path: "garage", component: GarageComponent, canActivate: [authGuard], pathMatch: 'full' },
 ];
 

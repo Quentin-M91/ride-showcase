@@ -7,18 +7,20 @@
             </div>
 
             <ul class="nav-links" [class.active]="isMenuOpen">
-                <li><a routerLink="/accueil" (click)="pageAccueil()">Accueil</a></li>
-                <li><a routerLink="/profil" (click)="pageProfil()">Profil</a></li>
-                <li><a routerLink="/garage" (click)="pageGarage()">Garage</a></li>
-                <li><a routerLink="/chat" (click)="pageChat()">Chat</a></li>
-                <li><a routerLink="/contact" (click)="pageContact()">Contact</a></li>
+                <li><a routerLink="/" (click)="pageAccueil()">Accueil</a></li>
+                <li><a (click)="navigateOrRedirect('/profil')" [class.disabled-link]="!isLoggedIn">Profil</a></li>
+                <li><a (click)="navigateOrRedirect('/garage')" [class.disabled-link]="!isLoggedIn">Garage</a></li>
+                <li><a (click)="navigateOrRedirect('/chat')" [class.disabled-link]="!isLoggedIn">Fil d'actu</a></li>
+                <li><a (click)="navigateOrRedirect('/contact')" [class.disabled-link]="!isLoggedIn">Contact</a></li>
+                
+                <li *ngIf="isLoggedIn">
+                    <button (click)="logout()" class="logout-btn">Déconnexion</button>
+                </li>
             </ul>
 
             <div class="logo">
-                <a routerLink="/accueil" (click)="pageAccueil()"><img src="logo_stickers.png" alt="Logo"></a>
+                <a routerLink="/" (click)="pageAccueil()"><img src="logo_stickers.png" alt="Logo"></a>
             </div>
-
-            <!-- <a routerLink="/connexion" (click)="pageConnexion()" class="connexion-btn">Connexion</a> -->
 
             <a *ngIf="!username" routerLink="/connexion" (click)="pageConnexion()" class="connexion-btn">Connexion</a>
             <span *ngIf="username" class="welcome-msg"> Bienvenue, {{ username }} </span>

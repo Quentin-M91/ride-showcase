@@ -10,27 +10,34 @@ import { FormGroup } from '@angular/forms';
 })
 
 export class RequeteApiService {
-  constructor(private httpUtilisateurs: HttpClient) { }
-  private baseUrl = 'http://localhost:3000/users';
-  private token = localStorage.getItem("token")
+  constructor(private httpUtilisateurs: HttpClient) {}
+
+  private baseUrl = 'http://localhost:3000';
+
+  private getToken(): string | null {
+    return localStorage.getItem("token");
+  }
 
   private getHeaders(): HttpHeaders {
-    if (!this.token) {
-      throw new Error('No authentication token');
+    const token = this.getToken();
+
+    if (!token) {
+      return new HttpHeaders(); // Retourne un header vide (aucune auth)
     }
+    console.log('Token envoyé dans headers :', token);
     // Retourner un objet HttpHeaders
     return new HttpHeaders({
-      Authorization: `${this.token}`
+      Authorization: `Bearer ${token}`
     });
   }
 
   // Inscription
   register(userData: any): Observable<any> {
-    return this.httpUtilisateurs.post(`${this.baseUrl}/register`, userData);
+    return this.httpUtilisateurs.post(`${this.baseUrl}/users/register`, userData);
   }
 
   login(loginForm: FormGroup): Observable<any> {
-    return this.httpUtilisateurs.post(`${this.baseUrl}/login`, loginForm, {withCredentials: true});
+    return this.httpUtilisateurs.post(`${this.baseUrl}/users/login`, loginForm, {withCredentials: true});
   }
 
   // Vérifie si l'utilisateur est connecté
@@ -46,49 +53,60 @@ export class RequeteApiService {
   // Méthode pour ajouter un client dans le forulaire-client
   addUser(utilisateur: any): Observable<any> {
     this.ensureToken();
-    const headers = this.getHeaders();
-    return this.httpUtilisateurs.post<any>(`${this.baseUrl}/users`, utilisateur, { headers });
+    return this.httpUtilisateurs.post<any>(`${this.baseUrl}/users/users`, utilisateur, { headers: this.getHeaders() });
   }
 
   // Méthode pour modifier un client directement dans son emplacement//
   updateUser(id: string, utilisateur: any): Observable<any> {
-    if (!this.token) {
+    if (!this.getToken()) {
       throw new Error('No authentification');
     }
-    const headers = this.getHeaders();
-    return this.httpUtilisateurs.put<any>(`${this.baseUrl}/users/${id}`, utilisateur, { headers });
+    return this.httpUtilisateurs.put<any>(`${this.baseUrl}/users/users/${id}`, utilisateur, { headers: this.getHeaders() });
   }
 
   getUserById(id: number): Observable<any> {
-    if (!this.token) {
+    if (!this.getToken()) {
       throw new Error('No authentication token');
     }
-    const headers = this.getHeaders();
-    return this.httpUtilisateurs.get<any>(`${this.baseUrl}/users/${id}`, { headers });
+    return this.httpUtilisateurs.get<any>(`${this.baseUrl}/users/users/${id}`, { headers: this.getHeaders() });
   }
 
   deleteUser(userId: string): Observable<any> {
-    const token = localStorage.getItem('token') || '';
-    const headers = { Authorization: token };
-    return this.httpUtilisateurs.delete<any>(`${this.baseUrl}/users/${userId}`, { headers });
+    const token = this.getToken();
+
+    if (!token) {
+      throw new Error('No authentication token');
+    }
+
+    const headers = new HttpHeaders({Authorization: `Bearer ${token}`});
+
+    return this.httpUtilisateurs.delete<any>(`${this.baseUrl}/users/users/${userId}`, { headers });
   }
 
   // Utilitaires
   private ensureToken(): void {
-    if (!this.token) {
+    if (!this.getToken()) {
       throw new Error('No authentication token');
     }
   }
 
   getUserInfo(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.httpUtilisateurs.get(`${this.baseUrl}/usersInfo`, { headers });
+    return this.httpUtilisateurs.get(`${this.baseUrl}/users/usersInfo`, { headers: this.getHeaders() });
   }
 
-  // getUserInfo(): Observable<{ username: string }> {
-  //   this.ensureToken();
-  //   const headers = this.getHeaders();
-  //   return this.httpUtilisateurs.get<{ username: string }>(`${this.baseUrl}/user`, { headers });
-  // }
+  getQrCode(userId: number): Observable<any> {
+    return this.httpUtilisateurs.get(`${this.baseUrl}/users/getQRCode/${userId}`);
+  }
+
+  createVehicule(data: any): Observable<any> {
+    return this.httpUtilisateurs.post(`${this.baseUrl}/vehicule/creation`, data, { headers: this.getHeaders() });
+  }
+
+  getVehiculesByUser(): Observable<any> {
+    return this.httpUtilisateurs.get(`${this.baseUrl}/vehicule/user`, { headers: this.getHeaders() });
+  }
+
+  uploadImage(data: { image: string }): Observable<any> {
+    return this.httpUtilisateurs.post(`${this.baseUrl}/vehicule/upload-image`, data);
+  }
 }

@@ -22,6 +22,7 @@ a {
 .logo img {
     font-size: 2px;
     font-weight: bold;
+    margin-left: 200px;
 }
 
 /* Style de la navbar */
@@ -93,7 +94,37 @@ a {
     transform: translate(0px, 3px);
 }
 
+.nav-links li button {
+    background: #e74c3c;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    display: inline-block;
+}
 
+.nav-links li button:hover {
+    background: #952316;
+    transition: 1s;
+    transform: translate(0px, 3px);
+    cursor: pointer;
+}
+
+.disabled-link {
+    pointer-events: none;
+    /* Désactive le clic */
+    opacity: 0.5;
+    /* Rend le bouton grisé */
+    background-color: #ccc !important;
+    /* Override fond actif */
+    color: #666 !important;
+    transition: none !important;
+    /* Enlève les animations */
+    transform: none !important;
+    /* Supprime les effets de déplacement */
+}
 
 .connexion-btn {
     font-family: Arial, sans-serif;
@@ -120,7 +151,7 @@ a {
 /* Message de bienvenue */
 .welcome-msg {
     font-family: Arial, sans-serif;
-    background: #FF8600;
+    background: #FFA700;
     color: #0B192C;
     padding: 10px 20px;
     border-radius: 20px;

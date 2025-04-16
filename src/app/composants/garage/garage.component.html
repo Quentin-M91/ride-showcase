@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<section class="garage-section">
+    <h2>Mon garage</h2>
+
+    <!-- Bouton pour afficher/masquer le formulaire -->
+    <button (click)="toggleForm()" class="toggle-btn">
+        {{ showForm ? 'Annuler' : 'Ajouter une voiture' }}
+    </button>
+
+    <!-- Formulaire d'ajout de voiture -->
+    <form *ngIf="showForm" (ngSubmit)="ajouterVoiture()" [formGroup]="voitureForm" class="car-form">
+        <input formControlName="marque" placeholder="Marque" required />
+        <input formControlName="modele" placeholder="Modèle" required />
+        <input formControlName="annee" type="number" placeholder="Année" required />
+        <input formControlName="type_de_vehicule" placeholder="Carrosserie (ex. VL, SUV, etc)" required />
+        <input formControlName="couleur" placeholder="Couleur" required />
+        <input formControlName="type_de_moteur" placeholder="Motorisation" required />
+        <input formControlName="puissance" type="number" placeholder="Puissance (en ch)" required />
+        <input formControlName="transmission" placeholder="Transmission" required />
+        <input formControlName="modification_du_vehicule" placeholder="Modifications apportées au véhicule" required />
+        <label for="images">Ajouter jusqu'à 5 images :</label>
+        <input type="file" id="images" (change)="onFileSelected($event)" accept="image/*" multiple>
+
+        <div class="image-preview" *ngIf="imagePreviews.length > 0">
+            <img *ngFor="let img of imagePreviews" [src]="img" alt="preview" />
+        </div>
+        <button type="submit" [disabled]="voitureForm.invalid">Ajouter</button>
+    </form>
+
+    <!-- Liste des voitures -->
+    <div class="voitures-list">
+        <div *ngFor="let voiture of voitures" class="car-card">
+            <h3>{{ voiture.marque }} {{ voiture.modele }}</h3>
+            <p>Année : {{ voiture.annee }}</p>
+            <p>Couleur : {{ voiture.couleur || 'Non spécifiée' }}</p>
+
+            <div *ngIf="voiture.images?.length > 0" class="carousel">
+                <img [src]="voiture.images[0].url" alt="photo véhicule" />
+            </div>
+        </div>
+    </div>
+</section>

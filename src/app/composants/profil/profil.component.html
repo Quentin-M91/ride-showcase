@@ -1,1 +1,72 @@
 <app-header></app-header>
+
+<main>
+    <div class="back1">
+        <h1>- - - Mon Profil - - -</h1>
+        <div class="Section-flex">
+            <section class="Section-relative">
+                <div class="container">
+                    <div class="text-section">
+                        <h2>Mes informations</h2>
+                        <p><strong>Nom :</strong> {{ utilisateur.nom }}</p>
+                        <p><strong>Prénom :</strong> {{ utilisateur.prenom }}</p>
+                        <p><strong>Email :</strong> {{ utilisateur.email }}</p>
+                        <p><strong>Nom d'utilisateur :</strong> {{ utilisateur.username }}</p>
+
+                        <button (click)="modifierMotDePasse()">Modifier le mot de passe</button>
+                    </div>
+
+                    <div class="image-section">
+                        <img id="image-droite"
+                            src="https://res.cloudinary.com/dm7287jxr/image/upload/v1744707240/voiture_profil_qiuvvq.png"
+                            alt="Photo d'une voiture sportive">
+                    </div>
+                </div>
+            </section>
+
+            <aside class="qr-container">
+                <h2>Mon QR Code</h2>
+                <p>Scannez le QR code ci-dessous pour accéder à votre profil.</p>
+
+                <button (click)="toggleQrCode()">
+                    {{ showQrCode ? 'Cacher le QR Code' : 'Afficher le QR Code' }} <i class="fa-solid fa-qrcode"></i>
+                </button>
+
+                <div *ngIf="showQrCode" class="qr-code-wrapper">
+                    <!-- Image affichée seulement si showImage est true -->
+                    <img [src]="qrCodeBase64" alt="QR Code" class="qr-style">
+                    <button (click)="downloadQrCode()">Télécharger <i class="fa-solid fa-download"></i></button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div class="back2">
+        <h1>- - - Mes voitures - - -</h1>
+        <p class="info-garage">Si vous voulez ajouter, modifier ou supprimer un véhicule, veuillez vous rendre dans la
+            section <button><a routerLink="/garage" (click)="pageGarage()">Garage</a></button></p>
+
+        <section *ngIf="vehicules.length > 0; else aucunVehicule" class="vehicules">
+            <div class="card" *ngFor="let voiture of vehicules">
+                <img [src]="voiture.images[0]?.url" alt="Image véhicule de l'utilisateur" class="voiture-img" />
+                <div class="details">
+                    <h2>{{ voiture.marque }} {{ voiture.modele }}</h2>
+                    <p><strong>Année :</strong> {{ voiture.annee }}</p>
+                    <p><strong>Couleur :</strong> {{ voiture.couleur }}</p>
+                    <p><strong>Type :</strong> {{ voiture.type_de_vehicule }}</p>
+                    <p><strong>Moteur :</strong> {{ voiture.type_de_moteur }}</p>
+                    <p><strong>Transmission :</strong> {{ voiture.transmission }}</p>
+                    <p><strong>Puissance :</strong> {{ voiture.puissance }} ch</p>
+                    <p><strong>Modifications :</strong> {{ voiture.modification_du_vehicule }}</p>
+                </div>
+            </div>
+        </section>
+
+        <ng-template #aucunVehicule>
+            <p class="aucun-vehicule">
+                Vous n'avez pas de véhicule pour le moment, veuillez en créer un dans la section <button><a routerLink="/garage" (click)="pageGarage()">Garage</a></button>
+            </p>
+        </ng-template>
+    </div>
+
+</main>

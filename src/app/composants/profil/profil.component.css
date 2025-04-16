@@ -1,0 +1,225 @@
+@font-face {
+    font-family: 'Machinery';
+    src: url(./../../../../public/fonts/MachineryScript_PERSONAL_USE_ONLY.otf);
+    font-weight: normal;
+    font-size: normal;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: 'Machinery';
+    background: linear-gradient(to right, #191BDF, #FFA700);
+    margin-left: 50px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.188);
+}
+
+.back1 {
+    background-color: #343434;
+    padding: 10px 0;
+}
+
+.back2 {
+    background-color: #c7c7c7;
+    padding: 10px 0;
+}
+
+/* Global styles */
+.Section-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    border: solid 2px #0B192C;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+/* Section Principale */
+.Section-relative {
+    width: 80%;
+}
+
+/* Section Container */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+/* section du profil */
+.text-section {
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.4em;
+    font-family: 'Machinery';
+}
+
+.text-section p {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Image Section */
+.image-section {
+    width: 50%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
+.image-section #image-droite {
+    -webkit-mask-image: linear-gradient(to left, black 30%, transparent 100%);
+    mask-image: linear-gradient(to left, black 30%, transparent 100%);
+}
+
+/* aside sur le QR code */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: beige;
+    border: 2px solid #0B192C;
+    border-radius: 10px;
+}
+
+.qr-container p {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #FF8600;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #FE6807;
+}
+
+.qr-code-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.qr-style {
+    margin-top: 20px;
+    width: 250px;
+    height: auto;
+    border: 2px solid #1E3E62;
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+i {
+    font-size: 1.2em;
+    color: #0B192C;
+}
+
+/* Section voiture */
+.vehicules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.card {
+    background-color: #0B192C;
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #191cdfc3;
+}
+
+.voiture-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.details {
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        margin: 0.2rem 0;
+    }
+}
+
+.info-garage {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.aucun-vehicule {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ff9999;
+    background-color: #1f2a40;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .qr-image {
+        max-width: 90vw;
+    }
+
+    button {
+        width: 90%;
+    }
+}

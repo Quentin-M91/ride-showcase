@@ -129,14 +129,6 @@ ul li strong {
     mask-image: linear-gradient(to left, black 60%, transparent 100%);
 }
 
-.video-section #vidéo-droite {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
-    mask-image: linear-gradient(to left, black 60%, transparent 100%);
-}
 
 /* Image Section */
 .image-section {

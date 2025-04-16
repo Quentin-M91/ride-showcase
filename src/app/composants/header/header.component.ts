@@ -12,6 +12,7 @@ import { RequeteApiService } from '../../services/requete-api.service';
 export class HeaderComponent {
   isMenuOpen = false;
   username: any; // Variable pour stocker le nom d'utilisateur
+  isLoggedIn = false; // Variable pour vérifier si l'utilisateur est connecté
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -24,23 +25,7 @@ export class HeaderComponent {
   //Sert à la navigation entre les routes et permettre leur sécurité. Lié avec html
   private router = inject(Router);
   pageAccueil() {
-    this.router.navigate(["/accueil"]);
-  }
-
-  pageProfil() {
-    this.router.navigate(["/profil"]);
-  }
-
-  pageGarage() {
-    this.router.navigate(["/garage"]);
-  }
-
-  pageChat() {
-    this.router.navigate(["/chat"]);
-  }
-
-  pageContact() {
-    this.router.navigate(["/contact"]);
+    this.router.navigate(["/"]);
   }
 
   pageConnexion() {
@@ -50,14 +35,33 @@ export class HeaderComponent {
   constructor(private authService: RequeteApiService) { }
 
   ngOnInit(): void {
-    this.authService.getUserInfo().subscribe({
-      next: (data) => {
-        this.username = data.username;  // Store user info for use in the template
-      },
-      error: (error) => {
-        // Handle errors (e.g., not authenticated, no token)
-        console.error('Error fetching user info:', error);
-      }
-    });
+    this.isLoggedIn = !!localStorage.getItem('token'); // Check si l'utilisateur est connecté avec la présence d'un token
+
+    if (this.isLoggedIn) {
+      this.authService.getUserInfo().subscribe({
+        next: (data) => {
+          this.username = data.username;  // Store user info for use in the template
+        },
+        error: (error) => {
+          console.error('Error fetching user info:', error);
+        }
+      });
+    }
+  }
+
+  navigateOrRedirect(path: string): void {
+    if (!this.isLoggedIn) {
+      this.router.navigate(['/connexion']);
+    } else {
+      this.router.navigate([path]);
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.isLoggedIn = false;
+    this.toggleMenu(); // Ferme le menu après déconnexion
+    // Redirige vers la page de connexion ou accueil
+    this.router.navigate(['/connexion']);
   }
 }

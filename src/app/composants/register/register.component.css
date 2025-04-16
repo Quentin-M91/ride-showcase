@@ -121,6 +121,10 @@
     color: #9a9a9a;
 }
 
+a {
+    font-weight: bold;
+}
+
 .error {
     color: red;
     font-size: 12px;
