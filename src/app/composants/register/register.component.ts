@@ -221,7 +221,7 @@ export class RegisterComponent {
 
       this.apiService.register(formData).subscribe({
         next: (response) => {
-          this.router.navigate(['/accueil']); // Redirige après connexion
+          this.router.navigate(['/']); // Redirige après connexion
           console.log('Inscription réussie', response);
         },
         error: (error) => {

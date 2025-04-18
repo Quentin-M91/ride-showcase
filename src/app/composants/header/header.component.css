@@ -3,7 +3,7 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 20px 100px;
     width: auto;
 }

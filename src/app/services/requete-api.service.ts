@@ -102,11 +102,23 @@ export class RequeteApiService {
     return this.httpUtilisateurs.post(`${this.baseUrl}/vehicule/creation`, data, { headers: this.getHeaders() });
   }
 
+  updateVehicule(id: string, data: any): Observable<any> {
+    return this.httpUtilisateurs.put<any>(`${this.baseUrl}/vehicule/modification/${id}`, data, { headers: this.getHeaders()});
+  }
+
+  deleteVehicule(id: string): Observable<any> {
+    return this.httpUtilisateurs.delete<any>(`${this.baseUrl}/vehicule/suppression/${id}`, { headers: this.getHeaders()});
+  }
+
   getVehiculesByUser(): Observable<any> {
     return this.httpUtilisateurs.get(`${this.baseUrl}/vehicule/user`, { headers: this.getHeaders() });
   }
 
   uploadImage(data: { image: string }): Observable<any> {
     return this.httpUtilisateurs.post(`${this.baseUrl}/vehicule/upload-image`, data);
+  }
+
+  getProfilPublic(token: string) {
+    return this.httpUtilisateurs.get(`${this.baseUrl}/users/profil-public?token=${token}`);
   }
 }

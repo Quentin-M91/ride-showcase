@@ -6,6 +6,9 @@ import { LoginComponent } from './composants/login/login.component';
 import { ProfilComponent } from './composants/profil/profil.component';
 import { authGuard } from './guards/auth.guard';
 import { GarageComponent } from './composants/garage/garage.component';
+import { ContactComponent } from './composants/contact/contact.component';
+import { ActualiteComponent } from './composants/actualite/actualite.component';
+import { PublicProfileComponent } from './composants/public-profile/public-profile.component';
 
 export const routes: Routes = [
     { path: "", component: AccueilComponent, pathMatch: 'full' },
@@ -14,5 +17,9 @@ export const routes: Routes = [
     { path: "connexion", component: LoginComponent, pathMatch: 'full' },
     { path: "profil", component: ProfilComponent, canActivate: [authGuard], pathMatch: 'full' },
     { path: "garage", component: GarageComponent, canActivate: [authGuard], pathMatch: 'full' },
+    { path: "contact", component: ContactComponent, canActivate: [authGuard], pathMatch: 'full' },
+    { path: "actualite", component: ActualiteComponent, canActivate: [authGuard], pathMatch: 'full' },
+
+    { path: 'profil-public', component: PublicProfileComponent },
 ];
 

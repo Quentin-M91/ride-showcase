@@ -1,0 +1,13 @@
+<div *ngIf="loading">Chargement...</div>
+
+<div *ngIf="error">
+    <p class="error">{{ error }}</p>
+</div>
+
+<div *ngIf="profil">
+    <h2>Profil Public</h2>
+    <p><strong>Nom :</strong> {{ profil.nom }}</p>
+    <p><strong>Prénom :</strong> {{ profil.prenom }}</p>
+    <p><strong>Username :</strong> {{ profil.username }}</p>
+    <p><strong>Email :</strong> {{ profil.email }}</p>
+</div>

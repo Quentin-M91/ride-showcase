@@ -7,10 +7,9 @@
             </div>
 
             <ul class="nav-links" [class.active]="isMenuOpen">
-                <li><a routerLink="/" (click)="pageAccueil()">Accueil</a></li>
                 <li><a (click)="navigateOrRedirect('/profil')" [class.disabled-link]="!isLoggedIn">Profil</a></li>
                 <li><a (click)="navigateOrRedirect('/garage')" [class.disabled-link]="!isLoggedIn">Garage</a></li>
-                <li><a (click)="navigateOrRedirect('/chat')" [class.disabled-link]="!isLoggedIn">Fil d'actu</a></li>
+                <li><a (click)="navigateOrRedirect('/actualite')" [class.disabled-link]="!isLoggedIn">Fil d'actu</a></li>
                 <li><a (click)="navigateOrRedirect('/contact')" [class.disabled-link]="!isLoggedIn">Contact</a></li>
                 
                 <li *ngIf="isLoggedIn">

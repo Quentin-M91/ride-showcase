@@ -3,10 +3,11 @@ import { HeaderComponent } from "../header/header.component";
 import { CommonModule } from '@angular/common';
 import { RequeteApiService } from '../../services/requete-api.service';
 import { Router } from '@angular/router';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-profil',
-  imports: [HeaderComponent, CommonModule],
+  imports: [HeaderComponent, CommonModule, FooterComponent],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.css'
 })

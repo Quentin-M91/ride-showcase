@@ -1,43 +1,83 @@
 <app-header></app-header>
 
-<section class="garage-section">
-    <h2>Mon garage</h2>
+<main>
+    <div class="back1">
+        <h1>- - - Mon garage - - -</h1>
+        <section class="garage-section">
+            <p class="intro-text">Bienvenue dans votre garage. <br>Ici, vous pourrez ajouter vos véhicules en renseignant les informations de votre véhicule via le formulaire ci-dessous.</p>
+            <!-- Bouton pour afficher/masquer le formulaire -->
+            <button (click)="toggleForm()" class="toggle-btn">
+                {{ showForm ? 'Annuler' : 'Ajouter une voiture' }}
+            </button>
+        
 
-    <!-- Bouton pour afficher/masquer le formulaire -->
-    <button (click)="toggleForm()" class="toggle-btn">
-        {{ showForm ? 'Annuler' : 'Ajouter une voiture' }}
-    </button>
+            <!-- Formulaire d'ajout de voiture -->
+            <form *ngIf="showForm" (ngSubmit)="ajouterVoiture()" [formGroup]="voitureForm" class="car-form">
+                <input formControlName="marque" placeholder="Marque" required />
+                <input formControlName="modele" placeholder="Modèle" required />
+                <input formControlName="annee" type="number" placeholder="Année" required />
+                <input formControlName="type_de_vehicule" placeholder="Carrosserie (ex. VL, SUV, etc)" required />
+                <input formControlName="couleur" placeholder="Couleur" required />
+                <input formControlName="type_de_moteur" placeholder="Motorisation" required />
+                <input formControlName="puissance" type="number" placeholder="Puissance (en ch)" required />
+                <input formControlName="transmission" placeholder="Transmission" required />
+                <input formControlName="modification_du_vehicule" placeholder="Modifications apportées au véhicule" />
+                <label for="images">Ajouter jusqu'à 5 images :</label>
+                <input type="file" id="images" (change)="onFileSelected($event)" accept="image/*" multiple>
 
-    <!-- Formulaire d'ajout de voiture -->
-    <form *ngIf="showForm" (ngSubmit)="ajouterVoiture()" [formGroup]="voitureForm" class="car-form">
-        <input formControlName="marque" placeholder="Marque" required />
-        <input formControlName="modele" placeholder="Modèle" required />
-        <input formControlName="annee" type="number" placeholder="Année" required />
-        <input formControlName="type_de_vehicule" placeholder="Carrosserie (ex. VL, SUV, etc)" required />
-        <input formControlName="couleur" placeholder="Couleur" required />
-        <input formControlName="type_de_moteur" placeholder="Motorisation" required />
-        <input formControlName="puissance" type="number" placeholder="Puissance (en ch)" required />
-        <input formControlName="transmission" placeholder="Transmission" required />
-        <input formControlName="modification_du_vehicule" placeholder="Modifications apportées au véhicule" required />
-        <label for="images">Ajouter jusqu'à 5 images :</label>
-        <input type="file" id="images" (change)="onFileSelected($event)" accept="image/*" multiple>
+                <div class="image-preview" *ngIf="imagePreviews.length > 0">
+                    <img *ngFor="let img of imagePreviews" [src]="img" alt="preview" />
+                </div>
+                <button type="submit" [disabled]="voitureForm.invalid">Ajouter</button>
+            </form>
 
-        <div class="image-preview" *ngIf="imagePreviews.length > 0">
-            <img *ngFor="let img of imagePreviews" [src]="img" alt="preview" />
-        </div>
-        <button type="submit" [disabled]="voitureForm.invalid">Ajouter</button>
-    </form>
-
-    <!-- Liste des voitures -->
-    <div class="voitures-list">
-        <div *ngFor="let voiture of voitures" class="car-card">
-            <h3>{{ voiture.marque }} {{ voiture.modele }}</h3>
-            <p>Année : {{ voiture.annee }}</p>
-            <p>Couleur : {{ voiture.couleur || 'Non spécifiée' }}</p>
-
-            <div *ngIf="voiture.images?.length > 0" class="carousel">
-                <img [src]="voiture.images[0].url" alt="photo véhicule" />
+            <div class="video-section">
+                <video id="vidéo-droite" autoplay loop muted playsinline>
+                    <source src="https://res.cloudinary.com/dm7287jxr/video/upload/v1744893117/BM_mode_pnqyuc.mp4"
+                        type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
             </div>
+        </section>
+    </div>
+
+    <div class="back2">
+        <div class="car-section">
+            <!-- Liste des voitures -->
+            <section class="voitures-list">
+                <div *ngFor="let voiture of voitures; let i = index" class="car-card">
+                    <h3>{{ voiture.marque }} {{ voiture.modele }}</h3>
+                    <p>Année : {{ voiture.annee }}</p>
+                    <p>Couleur : {{ voiture.couleur || 'Non spécifiée' }}</p>
+                    <p>Puissance : {{ voiture.puissance }} Ch</p>
+                    <p>Modifications : {{ voiture.modification_du_vehicule || 'Non spécifiée' }}</p>
+
+                    <div *ngIf="voiture.images?.length > 0" class="carousel">
+                        <img [src]="voiture.images[0].url" alt="photo véhicule" />
+                    </div>
+
+                    <div class="card-actions">
+                        <button (click)="voiture.editing = !voiture.editing">Modifier</button>
+                        <button id="delete-btn" (click)="confirmDelete(i)">Supprimer</button>
+                    </div>
+
+                    <!-- Mini-formulaire inline -->
+                    <form *ngIf="voiture.editing" class="edit-form">
+                        <input [(ngModel)]="voiture.annee" name="annee" placeholder="Année" />
+                        <input [(ngModel)]="voiture.type_de_vehicule" name="type_de_vehicule"
+                            placeholder="Carrosserie" />
+                        <input [(ngModel)]="voiture.couleur" name="couleur" placeholder="Couleur" />
+                        <input [(ngModel)]="voiture.type_de_moteur" name="type_de_moteur" placeholder="Motorisation" />
+                        <input [(ngModel)]="voiture.puissance" name="puissance" placeholder="Puissance" />
+                        <input [(ngModel)]="voiture.transmission" name="transmission" placeholder="Transmission" />
+                        <input [(ngModel)]="voiture.modification_du_vehicule" name="modification_du_vehicule"
+                            placeholder="Modifications" />
+                        <button (click)="updateVehicule(voiture)">Sauvegarder</button>
+                    </form>
+                </div>
+            </section>
         </div>
     </div>
-</section>
+</main>
+
+<app-footer></app-footer>

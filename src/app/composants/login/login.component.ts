@@ -45,6 +45,6 @@ export class LoginComponent {
 
   //Sert à la navigation entre les routes et permettre leur sécurité. Lié avec html
   pageAccueil() {
-    this.router.navigate(["/accueil"]);
+    this.router.navigate(["/"]);
   }
 }

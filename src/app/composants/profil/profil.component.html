@@ -44,7 +44,7 @@
     <div class="back2">
         <h1>- - - Mes voitures - - -</h1>
         <p class="info-garage">Si vous voulez ajouter, modifier ou supprimer un véhicule, veuillez vous rendre dans la
-            section <button><a routerLink="/garage" (click)="pageGarage()">Garage</a></button></p>
+            section Garage.</p>
 
         <section *ngIf="vehicules.length > 0; else aucunVehicule" class="vehicules">
             <div class="card" *ngFor="let voiture of vehicules">
@@ -64,9 +64,11 @@
 
         <ng-template #aucunVehicule>
             <p class="aucun-vehicule">
-                Vous n'avez pas de véhicule pour le moment, veuillez en créer un dans la section <button><a routerLink="/garage" (click)="pageGarage()">Garage</a></button>
+                Vous n'avez pas de véhicule pour le moment, veuillez en créer un dans la section <a routerLink="/garage" (click)="pageGarage()">Garage</a>
             </p>
         </ng-template>
     </div>
 
 </main>
+
+<app-footer></app-footer>
