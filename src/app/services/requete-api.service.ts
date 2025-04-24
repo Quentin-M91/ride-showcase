@@ -121,4 +121,25 @@ export class RequeteApiService {
   getProfilPublic(token: string) {
     return this.httpUtilisateurs.get(`${this.baseUrl}/users/profil-public?token=${token}`);
   }
+
+  // Fil d'actualités
+  getFeed(): Observable<any> {
+    return this.httpUtilisateurs.get(`${this.baseUrl}/actu/feed`, { headers: this.getHeaders() });
+  }
+
+  createPost(post: { content: string }) {
+    return this.httpUtilisateurs.post(`${this.baseUrl}/actu/posts`, post, { headers: this.getHeaders() });
+  }
+
+  likePost(postId: number) {
+    return this.httpUtilisateurs.post(`${this.baseUrl}/actu/posts/${postId}/like`, {}, { headers: this.getHeaders() });
+  }
+  
+  getComments(postId: number) {
+    return this.httpUtilisateurs.get<any[]>(`${this.baseUrl}/actu/posts/${postId}/comments`, { headers: this.getHeaders() });
+  }
+  
+  addComment(postId: number, contenu: string) {
+    return this.httpUtilisateurs.post(`${this.baseUrl}/actu/posts/${postId}/comments`, { contenu }, { headers: this.getHeaders() });
+  }
 }

@@ -18,12 +18,7 @@ h1 {
     -webkit-text-stroke-color: rgba(255, 255, 255, 0.188);
 }
 
-.back1 {
-    background-color: #343434;
-    padding: 10px 0;
-}
-
-.back2 {
+.back {
     background-color: #c7c7c7;
     padding: 10px 0;
 }
@@ -35,8 +30,9 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    margin: 2% 5%;
     gap: 10px;
-    border: solid 2px #0B192C;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background-color: aliceblue;
 }
@@ -56,14 +52,14 @@ h1 {
 
 /* section du profil */
 .text-section {
-    width: 50%;
+    width: 40%;
     padding: 10px;
     text-align: center;
 }
 
 h2 {
     font-size: 1.7em;
-    font-family: 'Machinery';
+    font-family: 'Arial, sans serif';
 }
 
 .text-section p {
@@ -96,6 +92,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    margin-right: 2%;
     background-color: beige;
     border: 2px solid #0B192C;
     border-radius: 10px;

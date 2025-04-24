@@ -1,0 +1,101 @@
+.feed-container {
+    padding: 0.8rem 0px 2rem 0px;
+    margin-bottom: 80px;
+    /* pour ne pas cacher avec l'input bar */
+}
+
+.post {
+    width: 80%;
+    margin: 1rem auto;
+    padding: 1rem;
+    background-color: #fefefe;
+    box-shadow: 10px 8px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    transition: transform 0.2s ease;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+}
+
+.post-header {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.post-body {
+    margin-top: 0.5rem;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.5rem;
+
+    button {
+        border: 1px solid #0B192C;
+        border-radius: 40px;
+        background: none;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+}
+
+.post-input-bar {
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    border-top: 1px solid #ccc;
+}
+
+.post-input-bar textarea {
+    flex: 1;
+    resize: none;
+    padding: 0.5rem;
+}
+
+.post-input-bar button {
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+.post-input-bar button:hover {
+    cursor: pointer;
+    background: linear-gradient(to right, #FF8600, #1E3E62);
+}
+
+
+app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 600px) {
+    .post {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+
+    .post-input-bar {
+        flex-direction: column;
+
+        textarea {
+            height: 80px;
+        }
+    }
+}
