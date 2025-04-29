@@ -131,6 +131,10 @@ export class RequeteApiService {
     return this.httpUtilisateurs.post(`${this.baseUrl}/actu/posts`, post, { headers: this.getHeaders() });
   }
 
+  deletePost(postId: number) {
+    return this.httpUtilisateurs.delete(`${this.baseUrl}/actu/posts/${postId}`, { headers: this.getHeaders() });
+  }
+
   likePost(postId: number) {
     return this.httpUtilisateurs.post(`${this.baseUrl}/actu/posts/${postId}/like`, {}, { headers: this.getHeaders() });
   }
@@ -141,5 +145,9 @@ export class RequeteApiService {
   
   addComment(postId: number, contenu: string) {
     return this.httpUtilisateurs.post(`${this.baseUrl}/actu/posts/${postId}/comments`, { contenu }, { headers: this.getHeaders() });
+  }
+
+  deleteComment(postId: number, commentId: number) {
+    return this.httpUtilisateurs.delete(`${this.baseUrl}/actu/posts/${postId}/comments/${commentId}`, { headers: this.getHeaders() });
   }
 }

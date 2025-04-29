@@ -1,4 +1,5 @@
 <app-header></app-header>
+
 <main>
     <div class="feed-container">
         <div *ngFor="let post of posts" class="post">
@@ -13,16 +14,23 @@
 
             <!-- Actions dans le même scope -->
             <div class="post-actions">
-                <button (click)="like(post.id)">❤️ Like</button>
-                <button (click)="toggleComments(post.id)">💬 Comments</button>
+                <button (click)="like(post.id)"><i class="fa-solid fa-heart" [ngStyle]="{ color: hasUserLiked(post) ? '#FF0000' : '#FFFFFF' }">&nbsp;{{ post.likes?.length || 0 }}</i></button>
+                <button (click)="toggleComments(post.id)"><i class="fa-solid fa-comment" style="color: #FFFFFF;"></i></button>
+                <div *ngIf="post.Utilisateur.id === currentUserId">
+                    <button (click)="deletePost(post.id)"><i class="fa-solid fa-trash"></i></button>
+                </div>
             </div>
-
+            
             <!-- Commentaire -->
-            <div *ngIf="showingComments[post.id]">
+            <div class="coms" *ngIf="showingComments[post.id]">
                 <div *ngFor="let c of comments[post.id]">
                     <p><strong>{{ c.Utilisateur.prenom }}:</strong> {{ c.contenu }}</p>
+
+                    <div *ngIf="c.Utilisateur.id === currentUserId">
+                        <button (click)="deleteComment(post.id, c.id)" class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                    </div>
                 </div>
-                <input [(ngModel)]="newComment[post.id]" placeholder="Votre commentaire">
+                <textarea [(ngModel)]="newComment[post.id]" placeholder="Votre commentaire"></textarea>
                 <button (click)="addComment(post.id)">Envoyer</button>
             </div>
         </div>

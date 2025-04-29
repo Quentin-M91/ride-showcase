@@ -1,15 +1,20 @@
 .feed-container {
     padding: 0.8rem 0px 2rem 0px;
     margin-bottom: 80px;
-    /* pour ne pas cacher avec l'input bar */
+    min-height: 100vh;
+    background:
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.09) 1px, transparent 10px, transparent 5px),
+        linear-gradient(135deg, #0B192C, #1E3E62, #191BDF, #FE6807, #FF8600, #FFA700, #FFD700);
+    background-blend-mode: overlay;
+    background-size: cover;
 }
 
 .post {
     width: 80%;
     margin: 1rem auto;
     padding: 1rem;
-    background-color: #fefefe;
-    box-shadow: 10px 8px 8px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff72;
+    box-shadow: 9px 9px 6px rgba(0, 0, 0, 0.6);
     border: 1px solid #ccc;
     border-radius: 12px;
     font-family: Arial, sans-serif;
@@ -18,6 +23,7 @@
 
 .post:hover {
     transform: translateY(-2px);
+    background-color: #ffffff80;
 }
 
 .post-header {
@@ -33,35 +39,78 @@
 
 .post-actions {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 1rem;
     margin-top: 0.5rem;
 
     button {
         border: 1px solid #0B192C;
-        border-radius: 40px;
+        border-radius: 20px;
         background: none;
+        padding: 5px 6px;
         font-size: 1rem;
         cursor: pointer;
     }
 }
 
+.post-actions button:hover {
+    background: linear-gradient(to right, #FF8600, #1E3E62);
+}
+
+.coms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.3rem;
+    border: 2px solid #c2c2c2;
+    margin-top: 1rem;
+    background-color: #c8c8c895;
+
+    button {
+        border: none;
+        border-radius: 20px;
+        background: #333;
+        color: white;
+        padding: 5px 6px;
+        width: 50%;
+        align-self: center;
+        cursor: pointer;
+    }
+}
+
+.coms p {
+    font-size: 0.9rem;
+    margin: 0.7rem 0px 0.7rem 0.7rem;
+}
+
+.coms textarea {
+    resize: none;
+}
+
+.coms button:hover {
+    cursor: pointer;
+    background: linear-gradient(to right, #FF8600, #1E3E62);
+
+}
+
 .post-input-bar {
     position: fixed;
     bottom: 50px;
-    left: 0;
-    right: 0;
+    left: 0px;
+    right: 0px;
     background: #fff;
     padding: 0.5rem;
     display: flex;
     gap: 0.5rem;
+    border-radius: 10px 10px 0 0;
     border-top: 1px solid #ccc;
 }
 
 .post-input-bar textarea {
     flex: 1;
     resize: none;
-    padding: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 0px 20px 20px 0px;
 }
 
 .post-input-bar button {
@@ -69,14 +118,13 @@
     background: #333;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .post-input-bar button:hover {
     cursor: pointer;
     background: linear-gradient(to right, #FF8600, #1E3E62);
 }
-
 
 app-footer {
     position: fixed;
@@ -93,7 +141,7 @@ app-footer {
 
     .post-input-bar {
         flex-direction: column;
-
+        
         textarea {
             height: 80px;
         }

@@ -4,6 +4,8 @@ import { FooterComponent } from "../footer/footer.component";
 import { RequeteApiService } from '../../services/requete-api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-actualite',
@@ -18,18 +20,38 @@ export class ActualiteComponent implements OnInit {
   comments: { [postId: number]: any[] } = {};
   newComment: { [postId: number]: string } = {};
   showingComments: { [postId: number]: boolean } = {};
-  post: any;
-  router: any;
+  currentUserId: any;
 
-  constructor(private postService: RequeteApiService) { }
+  constructor(private postService: RequeteApiService, private router: Router) { }
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode(token);
+        this.currentUserId = decodedToken.id; // ou decodedToken.userId selon ton payload
+
+      } catch (error) {
+        console.error('Erreur lors du décodage du token :', error);
+      }
+    }
+
     this.loadFeed();
   }
 
   loadFeed() {
-    this.postService.getFeed().subscribe(data => {
-      this.posts = data;
+    this.postService.getFeed().subscribe({
+      next: (posts) => {
+        console.log('Posts:', posts);
+        this.posts = posts.map((post: any) => ({
+          ...post,
+          likes: post.Likers?.map((liker: any) => ({ utilisateurId: liker.id })) || []
+        }));
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement du fil d\'actualité :', err);
+      }
     });
   }
 
@@ -47,7 +69,30 @@ export class ActualiteComponent implements OnInit {
   }
 
   like(postId: number) {
-    this.postService.likePost(postId).subscribe();
+    this.postService.likePost(postId).subscribe({
+      next: (response) => {
+        const post = this.posts.find(p => p.id === postId);
+        if (post) {
+          if (!post.likes) {
+            post.likes = [];
+          }
+
+          // Vérifier si l'utilisateur a déjà liké
+          const likeIndex = post.likes.findIndex((like: { utilisateurId: number }) => like.utilisateurId === this.currentUserId);
+
+          if (likeIndex === -1) {
+            // Si l'utilisateur n'a pas encore liké, on ajoute son like
+            post.likes.push({ utilisateurId: this.currentUserId });
+          } else {
+            // Si l'utilisateur a déjà liké, on retire son like
+            post.likes.splice(likeIndex, 1);
+          }
+        }
+      },
+      error: (error) => {
+        console.error('Erreur lors du like :', error);
+      }
+    });
   }
 
   toggleComments(postId: number) {
@@ -66,5 +111,21 @@ export class ActualiteComponent implements OnInit {
       this.newComment[postId] = '';
       this.toggleComments(postId);
     });
+  }
+
+  deletePost(id: number) {
+    this.postService.deletePost(id).subscribe(() => {
+      this.loadFeed(); // recharge les posts après suppression
+    });
+  }
+
+  deleteComment(postId: number, commentId: number) {
+    this.postService.deleteComment(postId, commentId).subscribe(() => {
+      this.toggleComments(postId); // recharge les commentaires
+    });
+  }
+
+  hasUserLiked(post: any): boolean {
+    return post.likes?.some((like: { utilisateurId: number }) => like.utilisateurId === this.currentUserId);
   }
 }

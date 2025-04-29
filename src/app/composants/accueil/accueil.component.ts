@@ -3,7 +3,6 @@ import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',

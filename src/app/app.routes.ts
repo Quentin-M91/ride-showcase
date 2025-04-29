@@ -19,6 +19,7 @@ export const routes: Routes = [
     { path: "garage", component: GarageComponent, canActivate: [authGuard], pathMatch: 'full' },
     { path: "contact", component: ContactComponent, canActivate: [authGuard], pathMatch: 'full' },
     { path: "actualite", component: ActualiteComponent, canActivate: [authGuard], pathMatch: 'full' },
+    { path: 'profil/:id', component: ProfilComponent, canActivate: [authGuard], pathMatch: 'full' },
     { path: 'profil-public', component: PublicProfileComponent },
 ];
 
